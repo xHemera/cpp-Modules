@@ -6,7 +6,7 @@
 /*   By: hemera <hemera@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:22:55 by hemera            #+#    #+#             */
-/*   Updated: 2025/11/14 00:51:52 by hemera           ###   ########.fr       */
+/*   Updated: 2025/11/14 00:57:26 by hemera           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,11 @@ void search(PhoneBook &phonebook)
 	{
 		std::cout << "Enter the index of the contact to view details: ";
 		std::cin >> index;
-		if(std::cin.eof())
-			break;
+		if(std::cin.eof() || std::cin.fail())
+		{
+			std::cin.clear();
+			return;
+		}
 		if (index < 0 || index >= phonebook.contactCount)
 		{
 			std::cout << "Invalid index." << std::endl;
