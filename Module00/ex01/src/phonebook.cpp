@@ -6,61 +6,51 @@
 /*   By: hemera <hemera@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:22:55 by hemera            #+#    #+#             */
-/*   Updated: 2025/11/14 00:57:26 by hemera           ###   ########.fr       */
+/*   Updated: 2025/11/14 12:30:12 by hemera           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "../includes/phonebook.hpp"
+#include "../includes/contact.hpp"
 
-static std::string formatField(const std::string& field)
-{
-	if (field.length() > 9)
-		return field.substr(0, 8) + ".";
-	else if (field.length() < 9)
-		return field + std::string(9 - field.length(), ' ') ;
-	else
-		return field;
-}
+PhoneBook::PhoneBook() : contactCount(0), nextIndex(0){}
 
 void add(PhoneBook &phonebook)
 {
 		std::string firstname, lastname, nickname, phoneNumber, darkestSecret;
-		std::cout << "Enter firstname: ";
+
 		while (firstname == "")
 		{
-			std::cin >> firstname;
+			std::cout << "Enter firstname: ";
+			std::getline(std::cin, firstname);
 			if (std::cin.eof())
 				return ;
 		}
-
-		std::cout << "Enter lastname: ";
 		while (lastname == "")
 		{
-			std::cin >> lastname;
+			std::cout << "Enter lastname: ";
+			std::getline(std::cin, lastname);
 			if (std::cin.eof())
 				return ;
 		}
-
-		std::cout << "Enter nickname: ";
 		while (nickname == "")
 		{
-			std::cin >> nickname;
+			std::cout << "Enter nickname: ";
+			std::getline(std::cin, nickname);
 			if (std::cin.eof())
 				return ;
 		}
-
-		std::cout << "Enter phone number: ";
 		while (phoneNumber == "")
 		{
-			std::cin >> phoneNumber;
+			std::cout << "Enter phone number: ";
+			std::getline(std::cin, phoneNumber);
 			if (std::cin.eof())
 				return ;
 		}
-
-		std::cout << "Enter darkest secret: ";
 		while (darkestSecret == "")
 		{
-			std::cin >> darkestSecret;
+			std::cout << "Enter darkest secret: ";
+			std::getline(std::cin, darkestSecret);
 			if (std::cin.eof())
 				return ;
 		}
@@ -93,25 +83,29 @@ void search(PhoneBook &phonebook)
 		return;
 	}
 
-	std::cout << "Index     | Firstname| Lastname | Nickname" << std::endl;
+	std::cout << "Index     |Firstname |Lastname  |Nickname" << std::endl;
 	int i = 0;
 	while (i < phonebook.contactCount)
 	{
-		std::cout << i << "         | "
-				  << formatField(phonebook.contacts[i].firstname) << "| "
-				  << formatField(phonebook.contacts[i].lastname) << "| "
+		std::cout << i << "         |"
+				  << formatField(phonebook.contacts[i].firstname) << "|"
+				  << formatField(phonebook.contacts[i].lastname) << "|"
 				  << formatField(phonebook.contacts[i].nickname) << std::endl;
 		i++;
 	}
 	int index;
+	std::string input;
 	while (true)
 	{
 		std::cout << "Enter the index of the contact to view details: ";
-		std::cin >> index;
+		std::getline(std::cin, input);
 		if(std::cin.eof() || std::cin.fail())
+			return ;
+		std::stringstream ss(input);
+		if (!(ss >> index) || !(ss.eof()))
 		{
-			std::cin.clear();
-			return;
+			std::cout << "Invalid input. Please enter a valid index." << std::endl;
+			continue;
 		}
 		if (index < 0 || index >= phonebook.contactCount)
 		{
@@ -128,28 +122,3 @@ void search(PhoneBook &phonebook)
 	std::cout << "Darkest Secret: " << selectedContact.darkestSecret << std::endl;
 }
 
-int main(void)
-{
-	PhoneBook phonebook;
-	std::string input;
-	std::cout << "Welcome to your pretty useless PhoneBook !!" << std::endl;
-	while (true)
-	{
-		std::cout << "> ";
-		std::cin >> input;
-		if(std::cin.eof())
-			break;
-		if (input == "ADD")
-			add(phonebook);
-		else if (input == "SEARCH")
-			search(phonebook);
-		else if (input == "EXIT")
-		{
-			std::cout << "Goodbye!" << std::endl;
-			return (0);
-		}
-		else
-			std::cout << "Invalid command. Please enter ADD, SEARCH, or EXIT." << std::endl;
-	}
-	return 0;
-}
