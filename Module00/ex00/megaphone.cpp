@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tobesnar <tobesnar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hemera <hemera@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 12:00:28 by tobesnar          #+#    #+#             */
-/*   Updated: 2025/11/12 12:07:56 by tobesnar         ###   ########.fr       */
+/*   Updated: 2025/11/27 14:29:51 by hemera           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 		return ((std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl), 1);
 	while(argv[i])
 	{
+		j = 0;
 		while(argv[i][j])
 		{
 			c = toupper(argv[i][j]);
