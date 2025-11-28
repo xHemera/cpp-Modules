@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hemera <hemera@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:22:55 by hemera            #+#    #+#             */
-/*   Updated: 2025/11/14 12:30:12 by hemera           ###   ########.fr       */
+/*   Updated: 2025/11/28 14:35:12 by hemera           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/phonebook.hpp"
-#include "../includes/contact.hpp"
+#include "../includes/Phonebook.hpp"
 
 PhoneBook::PhoneBook() : contactCount(0), nextIndex(0){}
 

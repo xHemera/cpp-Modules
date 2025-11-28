@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "contact.hpp"
+#include "Contact.hpp"
 
 class PhoneBook {
 	public:

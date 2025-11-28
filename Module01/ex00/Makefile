@@ -1,6 +1,6 @@
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
-SRC			= src/main.cpp src/newZombie.cpp src/Zombie.cpp src/randomChump.cpp
+SRC			= src/main.cpp src/NewZombie.cpp src/Zombie.cpp src/RandomChump.cpp
 OBJ			= $(SRC:.cpp=.o)
 NAME		= zombie
 
