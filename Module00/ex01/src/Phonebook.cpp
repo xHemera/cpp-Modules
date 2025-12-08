@@ -6,7 +6,7 @@
 /*   By: hemera <hemera@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:22:55 by hemera            #+#    #+#             */
-/*   Updated: 2025/11/28 14:35:12 by hemera           ###   ########.fr       */
+/*   Updated: 2025/12/08 15:02:45 by hemera           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,13 @@ void add(PhoneBook &phonebook)
 				return ;
 		}
 
-		// Create a new contact
-		Contact newContact;
-		newContact.firstname = firstname;
-		newContact.lastname = lastname;
-		newContact.nickname = nickname;
-		newContact.phoneNumber = phoneNumber;
-		newContact.darkestSecret = darkestSecret;
-
-		// Add the new contact to the phonebook and manage overwriting if full
+	// Create a new contact
+	Contact newContact;
+	newContact.setFirstname(firstname);
+	newContact.setLastname(lastname);
+	newContact.setNickname(nickname);
+	newContact.setPhoneNumber(phoneNumber);
+	newContact.setDarkestSecret(darkestSecret);		// Add the new contact to the phonebook and manage overwriting if full
 		int prevCount = phonebook.contactCount;
 		phonebook.contacts[phonebook.nextIndex] = newContact;
 		if (phonebook.contactCount < 8)
@@ -87,9 +85,9 @@ void search(PhoneBook &phonebook)
 	while (i < phonebook.contactCount)
 	{
 		std::cout << i << "         |"
-				  << formatField(phonebook.contacts[i].firstname) << "|"
-				  << formatField(phonebook.contacts[i].lastname) << "|"
-				  << formatField(phonebook.contacts[i].nickname) << std::endl;
+				  << formatField(phonebook.contacts[i].getFirstname()) << "|"
+				  << formatField(phonebook.contacts[i].getLastname()) << "|"
+				  << formatField(phonebook.contacts[i].getNickname()) << std::endl;
 		i++;
 	}
 	int index;
@@ -114,10 +112,10 @@ void search(PhoneBook &phonebook)
 		break;
 	}
 	Contact selectedContact = phonebook.contacts[index];
-	std::cout << "Firstname: " << selectedContact.firstname << std::endl;
-	std::cout << "Lastname: " << selectedContact.lastname << std::endl;
-	std::cout << "Nickname: " << selectedContact.nickname << std::endl;
-	std::cout << "Phone Number: " << selectedContact.phoneNumber << std::endl;
-	std::cout << "Darkest Secret: " << selectedContact.darkestSecret << std::endl;
+	std::cout << "Firstname: " << selectedContact.getFirstname() << std::endl;
+	std::cout << "Lastname: " << selectedContact.getLastname() << std::endl;
+	std::cout << "Nickname: " << selectedContact.getNickname() << std::endl;
+	std::cout << "Phone Number: " << selectedContact.getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret: " << selectedContact.getDarkestSecret() << std::endl;
 }
 

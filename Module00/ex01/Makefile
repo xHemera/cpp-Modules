@@ -1,6 +1,6 @@
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
-SRC			= src/Phonebook.cpp src/utils.cpp src/main.cpp
+SRC			= src/Phonebook.cpp src/Contact.cpp src/utils.cpp src/main.cpp
 OBJ			= $(SRC:.cpp=.o)
 NAME		= phonebook
 

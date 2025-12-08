@@ -11,7 +11,6 @@ class PhoneBook {
 		Contact contacts[8];
 		int contactCount;
 		int nextIndex;
-
 		PhoneBook();
 };
 
